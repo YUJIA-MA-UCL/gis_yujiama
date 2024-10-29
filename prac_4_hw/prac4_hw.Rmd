@@ -14,11 +14,10 @@ library(countrycode)
 library(janitor)
 ```
 
-## open the geojson file
+## read in the geojson file
 ```{r}
 worldcities <- st_read("World_Countries_(Generalized)_9029012925078512962.geojson")
 qtm(worldcities)
-plot(worldcities)
 ```
 
 ## open .csv file, filter the gii_data, and change the countrycode
@@ -56,6 +55,9 @@ WorldDataMap <- worldcities %>%
         no.dups = TRUE)%>%
   distinct(.,iso,
            .keep_all = TRUE)
+
+#left join
+gii_diff <- worldcities_gii
 
 library(ggplot2)
 

@@ -12,6 +12,7 @@ library(here)
 library(dplyr)
 library(countrycode)
 library(janitor)
+library(ggplot2)
 ```
 
 ## read in the geojson file
@@ -55,11 +56,6 @@ WorldDataMap <- worldcities %>%
         no.dups = TRUE)%>%
   distinct(.,iso,
            .keep_all = TRUE)
-
-#left join
-gii_diff <- worldcities_gii
-
-library(ggplot2)
 
 ggplot(WorldDataMap) +
   geom_sf(aes(fill = diff)) + 
